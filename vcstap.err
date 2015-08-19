@@ -1,0 +1,4 @@
+>>> Warning 202 "C:\Users\James Jarvis\Desktop\planetPrecision\vcstap\modbus_handler_vcstap.c" Line 9(7,10): Variable never used:   val
+      Memory usage:   ROM=10%      RAM=19% - 25%
+      0 Errors,  1 Warnings.
+Build Successful.
