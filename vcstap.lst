@@ -1,4 +1,4 @@
-CCS PCH C Compiler, Version 4.135, 4375               19-Aug-15 17:11
+CCS PCH C Compiler, Version 4.135, 4375               29-Aug-16 12:09
 
                Filename: C:\Users\James Jarvis\Desktop\planetPrecision\vcstap\vcstap.lst
 
@@ -6951,10 +6951,10 @@ CCS PCH C Compiler, Version 4.135, 4375               19-Aug-15 17:11
 .................... 	config.serial_prefix='A'; //SERIAL_PREFIX_DEFAULT; 
 00FF0:  MOVLW  41
 00FF2:  MOVWF  22
-.................... 	config.serial_number=4687; //SERIAL_NUMBER_DEFAULT; 
+.................... 	config.serial_number=4747; //SERIAL_NUMBER_DEFAULT; 
 00FF4:  MOVLW  12
 00FF6:  MOVWF  24
-00FF8:  MOVLW  4F
+00FF8:  MOVLW  8B
 00FFA:  MOVWF  23
 ....................  
 ....................  
@@ -7847,13 +7847,15 @@ CCS PCH C Compiler, Version 4.135, 4375               19-Aug-15 17:11
 0186A:  BRA    1800
 .................... } 
 ....................  
-0186C:  SLEEP 
+0186C:  BRA    186C
 
 Configuration Fuses:
-   Word  1: CF00   FCMEN IESO
-   Word  2: 1F1E   PUT BROWNOUT BORV21 WDT WDT32768
+   Word  1: 4F00   FCMEN NOIESO
+   Word  2: 1A19   NOPUT NOBROWNOUT BORV21 NOWDT WDT8192
    Word  3: 8600   PBADEN LPT1OSC MCLR
-   Word  4: 00B1   STVREN NOLVP NOXINST NODEBUG
+   Word  4: 0030   NOSTVREN NOLVP NOXINST DEBUG
    Word  5: C00F   NOPROTECT NOCPB NOCPD
    Word  6: E00F   NOWRT NOWRTC NOWRTB NOWRTD
    Word  7: 400F   NOEBTR NOEBTRB
+
+   Some fuses have been forced to be compatible with the ICD debugger.

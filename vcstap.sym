@@ -349,7 +349,7 @@ Project Files:
     live.c                                                  [19-Apr-13 21:35  CRC=C5C45FC7]
     modbus_slave_vcstap.c                                   [19-Apr-13 15:17  CRC=076A60D5]
     interrupt.c                                             [19-Apr-13 17:15  CRC=A96F2203]
-    param.c                                                 [19-Aug-15 17:11  CRC=9C36D37E]
+    param.c                                                 [29-Aug-16 12:10  CRC=9C36D37E]
     modbus_handler_vcstap.c                                 [16-Apr-13 15:10  CRC=F0738155]
 
 Source signature=10E08F39
@@ -364,6 +364,10 @@ Compiler Settings:
     Opt Level:      9
     Short,Int,Long: UNSIGNED: 1,8,16
     Float,Double:   32,32
+    ICD Provisions: Yes
+    Predefined symbols:
+       #define __DEBUG 1
+       #define __18F2680 TRUE
 
 Output Files:
     Errors:      vcstap.err
