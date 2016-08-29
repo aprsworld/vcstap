@@ -89,7 +89,7 @@
    ³  ÃÄsend_can_query  0/68  Ram=9
    ³  ³  ÀÄcan_putd  0/210  Ram=17
    ³  ³     ÀÄcan_set_id  0/308  Ram=13
-   ³  ÃÄlive_send_vcs  0/472  Ram=184
+   ³  ÃÄlive_send_vcs  0/458  Ram=184
    ³  ³  ÃÄ@MEMSET  0/26  Ram=0
    ³  ³  ÃÄcrc_chk  0/102  Ram=8
    ³  ³  ÃÄ@PUTCHARI_BIU_1  0/8  Ram=0
