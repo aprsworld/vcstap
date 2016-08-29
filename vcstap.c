@@ -34,6 +34,7 @@ typedef struct {
 	int8 vcs_register     [VCS_N_REGISTERS*4]; /* 40 32-bit registers */
 	int16 vcs_query_age;
 	int8 vcs_read_lock; /* 1 means nobody can modify the data */
+	int16 _vcs_last_data_age;
 
 	int16 led_on_red;
 	int16 led_on_green;
@@ -88,16 +89,7 @@ void init() {
 
 	/* CAN interface to VCS */
 	can_init();
-	/* set receive filter so we only get data from CAN ID 3*/
-//	can_set_mode(CAN_OP_CONFIG); 
-//	can_set_id(RX0MASK,0x003,false); ???
-//	can_set_mode(CAN_OP_NORMAL); 
-   // mask bit n | filter bit n | message ID bit n | result
-   //     0             x               x             accept
-   //     1             0               0             accept
-   //     1             0               1             reject
-   //     1             1               0             reject
-   //     1             1               1             accept
+
 	/* receive and receiver error interrupts */
 	enable_interrupts(INT_CANRX0); 
 	enable_interrupts(INT_CANRX1); 
@@ -115,6 +107,7 @@ void init() {
 
 	timer.vcs_read_lock=0;
 	timer.vcs_query_age=0;
+	timer.vcs_last_data_age=65535;
 	memset(timer.vcs_register, 0, sizeof(timer.vcs_register));
 
 	timer.dump_register=255; 
@@ -165,6 +158,9 @@ void send_can_query(int8 queryRegister) {
 	data[3]=0x00; 
 
 	if ( 0 == can_putd(can_id,data,4,0,FALSE,FALSE) ) {
+		/* on error */
+		can_abort();
+		can_init();
 //		timer.led_on_red=50;
 	}
 
@@ -215,40 +211,12 @@ void main(void) {
 				last=0;
 
 			send_can_query(last++);
-//			send_can_query(10);
 			timer.vcs_query_age=0;
 		}
 
 
-#if 0
-		if ( timer.dump_register != 255 ) {
-			/* takes about 4 milliseconds */
-			disable_interrupts(INT_CANRX0);
-			disable_interrupts(INT_CANRX1);
-
-			fprintf(rs232,"# [%u] {%02x %02x %02x %02x}\r\n",
-				timer.dump_register,
-				timer.vcs_register[timer.dump_register<<2 + 0],
-				timer.vcs_register[timer.dump_register<<2 + 1],
-				timer.vcs_register[timer.dump_register<<2 + 2],
-				timer.vcs_register[timer.dump_register<<2 + 3]
-			);
-//			fputc('*',rs232);
-
-			timer.dump_register=255;
-
-			enable_interrupts(INT_CANRX0);
-			enable_interrupts(INT_CANRX1);
-		}
-#endif
-
-
-
-//		modbus_process();
-
 	    /*
 	     * every 10 seconds we send a sync pulse which should trigger another packet from XRW2G
-	     * if we have wirless sensors, then this doesn't matter
 	     */
 	    if ( timer.now_telem ) {
 			timer.now_telem=0;
@@ -276,36 +244,6 @@ void main(void) {
 #endif
 		}
 
-#if 0
-		 /* we haven't sent live data for 32 seconds */
-		if (  timer.telem_age > 32000 ) {
-			live_send(1);
-			timer.telem_age=0;
-		}
-
-	
-
-		if ( ! timer.modbus_enable ) {
-			/* 	
-				Status LEDs: 
-					Solid red if no VCS data
-					Flash of red on bad packets from inverter (in packet parse routine)
-					Solid green if XRW2G in last 12 seconds
-			*/
-//			if ( timer.inverter_conditions_age > 1025 ) {
-//				timer.led_on_red=2000;
-//			} 
-	
-			if (timer.xrw2g_age < 12000 ) {
-				timer.led_on_green=2000;
-			}
-		}
-
-		/* full time RED LED if default serial number */
-//		if ( config.serial_prefix == SERIAL_PREFIX_DEFAULT && config.serial_number == SERIAL_NUMBER_DEFAULT ) {
-//			timer.led_on_red=200;
-//		}
-#endif
 	}
 }
 

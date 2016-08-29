@@ -6,6 +6,9 @@ void isr_1ms(void) {
 	if ( timer.vcs_query_age < 65535 )
 		timer.vcs_query_age++;
 
+	if ( timer.vcs_last_data_age < 65535 )
+		timer.vcs_last_data_age++;
+
 
 	/* data ages */
 	if ( timer.xrw2g_age < 65535 )
@@ -110,6 +113,9 @@ void can_receive(void) {
 		timer.vcs_register[rx_len + 1]=buffer[5];
 		timer.vcs_register[rx_len + 2]=buffer[6];
 		timer.vcs_register[rx_len + 3]=buffer[7];
+
+		/* reset last data received timer */
+		timer.vcs_last_data_age=0;
 	}
 }
 
