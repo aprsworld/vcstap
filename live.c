@@ -68,7 +68,7 @@ void live_send_vcs(void) {
 	/* any fault */
 //	if ( timer.vcs_register[30*4] || timer.vcs_register[30*4+1] || timer.vcs_register[30*4+2] || timer.vcs_register[30*4+3] ) {
 	/* system state 6 (FAULT) */
-	if ( 6==timer.vcs_register[19*4+1] && 0==timer.vcs_register[19*4+0] && 0==timer.vcs_register[19*4+3] && 0==timer.vcs_register[19*4+2] ) {
+	if ( 6==timer.vcs_register[19*4+3] && 0==timer.vcs_register[19*4+2] && 0==timer.vcs_register[19*4+1] && 0==timer.vcs_register[19*4+0] ) {
 		output_high(RELAY_RED);
 	} else {
 		output_low(RELAY_RED);
