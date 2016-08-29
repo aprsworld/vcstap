@@ -288,14 +288,14 @@ ROM Allocation:
 0830  can_getd
 119A  uart_read
 0A82  uart_write
-15C8  uart_putc
+15D4  uart_putc
 122A  uart_kbhit
 1248  uart_getc
 0ADC  uart_init
 138E  crc_chk
 13FC  live_send_vcs
 0DB4  @MEMSET
-15DA  live_send_xrw2g
+15E6  live_send_xrw2g
 00EA  modbus_auchCRCHi
 01FA  modbus_auchCRCLo
 030A  modbus_enable_timeout
@@ -316,14 +316,14 @@ ROM Allocation:
 0DCE  init
 123C  read_data_xrw2g
 134A  send_can_query
-1732  MAIN
+173E  MAIN
 09CC  @const883
 09F6  @const884
 1052  @PSTRINGCN_9600_31766_31767
 107C  @PSTRINGC_9600_31766_31767
 10A0  @PRINTF_LU_9600_31766_31767
-1732  @cinit1
-1764  @cinit2
+173E  @cinit1
+1770  @cinit2
 0136  StrtoulGO
 0136  StrtolGO
 
@@ -346,7 +346,7 @@ Project Files:
     can.c                                                   [08-Mar-13 18:57  CRC=57307AD7]
     can.h                                                   [12-Apr-13 11:56  CRC=4B75D92E]
     uart_sci16is740.c                                       [19-Apr-13 11:54  CRC=AD688AAE]
-    live.c                                                  [29-Aug-16 14:14  CRC=D5EF6C2B]
+    live.c                                                  [29-Aug-16 14:17  CRC=D5EF6C2B]
     modbus_slave_vcstap.c                                   [19-Apr-13 15:17  CRC=076A60D5]
     interrupt.c                                             [29-Aug-16 13:31  CRC=E2C116A1]
     param.c                                                 [29-Aug-16 13:32  CRC=9C36D37E]
