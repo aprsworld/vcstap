@@ -62,6 +62,14 @@ void live_send_vcs(void) {
 		buff[j+2]=timer.vcs_register[i+3];
 		buff[j+3]=timer.vcs_register[i+2];
 	}
+
+	/* set fault indicator LED */
+	if ( timer.vcs_register[30*4] || timer.vcs_register[30*4+1] || timer.vcs_register[30*4+2] || timer.vcs_register[30*4+3] ) {
+		output_high(RELAY_RED);
+	} else {
+		output_low(RELAY_RED);
+	}
+
 	enable_interrupts(INT_CANRX0);
 	enable_interrupts(INT_CANRX1);
 

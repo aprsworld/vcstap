@@ -28,6 +28,7 @@ void isr_1ms(void) {
 		timer.led_on_green--;
 	}
 
+#if 0
 	/* LED Red */
 	if ( 0==timer.led_on_red ) {
 		output_low(LED_RED);
@@ -35,6 +36,8 @@ void isr_1ms(void) {
 		output_high(LED_RED);
 		timer.led_on_red--;
 	}
+#endif
+
 	output_low(TP_RED);
 }
 

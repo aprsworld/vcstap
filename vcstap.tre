@@ -89,7 +89,7 @@
    ³  ÃÄsend_can_query  0/68  Ram=9
    ³  ³  ÀÄcan_putd  0/210  Ram=17
    ³  ³     ÀÄcan_set_id  0/308  Ram=13
-   ³  ÃÄlive_send_vcs  0/418  Ram=184
+   ³  ÃÄlive_send_vcs  0/446  Ram=184
    ³  ³  ÃÄ@MEMSET  0/26  Ram=0
    ³  ³  ÃÄcrc_chk  0/102  Ram=8
    ³  ³  ÃÄ@PUTCHARI_BIU_1  0/8  Ram=0
@@ -106,7 +106,7 @@
    ³           ÀÄ@I2C_WRITE_1  0/82  Ram=1
    ÃÄmodbus_timeout_now  0/50  Ram=0
    ³  ÀÄmodbus_enable_timeout  0/20  Ram=1
-   ÃÄisr_1ms  0/142  Ram=0
+   ÃÄisr_1ms  0/116  Ram=0
    ÃÄisr_serial_inverter  0/118  Ram=3
    ³  ÃÄ@GETCH_BIU_1  0/24  Ram=0
    ³  ÃÄmodbus_calc_crc  0/46  Ram=2

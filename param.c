@@ -47,7 +47,7 @@ void write_default_param_file() {
 	config.revision='a';
 
 	config.serial_prefix='A'; //SERIAL_PREFIX_DEFAULT;
-	config.serial_number=4747; //SERIAL_NUMBER_DEFAULT;
+	config.serial_number=4745; //SERIAL_NUMBER_DEFAULT;
 
 
 	config.sensor_source=SENSOR_SOURCE_ONBOARD;

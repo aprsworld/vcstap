@@ -43,7 +43,8 @@
 #use standard_io(C)
 
 #define LED_GREEN                  PIN_B4
-#define LED_RED                    PIN_B5
+// #define LED_RED                    PIN_B5 repurposed as relay
+#define RELAY_RED                  PIN_B5
 
 #define XBEE_SLEEP                 PIN_A0
 #define XBEE_NRTS                  PIN_A1
