@@ -71,11 +71,11 @@ void live_send_vcs(void) {
 //	if ( 6==timer.vcs_register[19*4+3] || 6==timer.vcs_register[19*4+2] || 6==timer.vcs_register[19*4+1] || 6==timer.vcs_register[19*4+0] ) {
 	if ( 
 		(0==timer.vcs_register[19*4+3] && 0==timer.vcs_register[19*4+2] && 0==timer.vcs_register[19*4+1] && 6==timer.vcs_register[19*4+0])
-		|| timer.vcs_last_data_age>12000
+//		|| timer.vcs_last_data_age>12000
 	 ) {
-		output_high(RELAY_RED);
-	} else {
 		output_low(RELAY_RED);
+	} else {
+		output_high(RELAY_RED);
 	}
 
 	enable_interrupts(INT_CANRX0);
@@ -94,6 +94,8 @@ void live_send_vcs(void) {
 	sequenceNumber++;
 
 	output_high(SYNC_OUT);
+
+	restart_wdt();
 }
 
 /*		

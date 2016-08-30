@@ -34,7 +34,7 @@ typedef struct {
 	int8 vcs_register     [VCS_N_REGISTERS*4]; /* 40 32-bit registers */
 	int16 vcs_query_age;
 	int8 vcs_read_lock; /* 1 means nobody can modify the data */
-	int16 _vcs_last_data_age;
+	int16 vcs_last_data_age;
 
 	int16 led_on_red;
 	int16 led_on_green;
@@ -62,6 +62,8 @@ struct_timer  timer;
 
 void init() {
 	setup_oscillator(OSC_8MHZ | OSC_INTRC);
+	restart_wdt();
+	setup_wdt(WDT_ON);
 	setup_adc(ADC_OFF);
 	/* 
 	setup_adc_ports(NO_ANALOGS); doesn't seem to work. 
@@ -171,11 +173,19 @@ void send_can_query(int8 queryRegister) {
 void main(void) {
 	int8 last;
 
+	last=restart_cause();
+
 	/* normal device startup */
 	init();
 	read_param_file();
 	
 	write_default_param_file();
+
+	/* initial watchdog restart. Subsequently only restart in live send */
+	restart_wdt();
+
+	/* set relay to be initially off (indicating fault). vcs live send then controls there after */
+	output_low(RELAY_RED);
 
 	/* modbus_init turns on global interrupts */
 //	modbus_init();
@@ -183,6 +193,18 @@ void main(void) {
 	enable_interrupts(GLOBAL);
 
 	fprintf(rs232,"# (world) vcstap.c %s - my serial %c%lu\r\n",__DATE__,config.serial_prefix,config.serial_number);
+	switch ( last ) {
+		case WDT_TIMEOUT:       fprintf(rs232,"# WDT_TIMEOUT\r\n"); break;
+		case MCLR_FROM_SLEEP:   fprintf(rs232,"# MCLR_FROM_SLEEP\r\n"); break;
+		case MCLR_FROM_RUN:     fprintf(rs232,"# MCLR_FROM_RUN\r\n"); break;
+		case NORMAL_POWER_UP:   fprintf(rs232,"# NORMAL_POWER_UP\r\n"); break;
+		case BROWNOUT_RESTART:  fprintf(rs232,"# BROWNOUT_RESTART\r\n"); break;
+		case WDT_FROM_SLEEP:    fprintf(rs232,"# WDT_FROM_SLEEP\r\n"); break;
+		case RESET_INSTRUCTION: fprintf(rs232,"# RESET_INSTRUCTION\r\n"); break;
+		default:                fprintf(rs232,"# UNKNOWN CAUSE\r\n");
+	}
+		
+
 //	fprintf(rs232,"# (rs232) vcstap.c %s - my serial %c%lu\r\n",__DATE__,config.serial_prefix,config.serial_number);
 
 	/* fast red, yellow, green */
@@ -199,7 +221,7 @@ void main(void) {
 
 	/* main loop */
 	for ( ; ; ) {
-		restart_wdt();
+//		restart_wdt();
 
 		/* read data from our different sources */
 		read_data_xrw2g();

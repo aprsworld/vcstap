@@ -38,13 +38,13 @@
 164-266 modbus_rx
 267-268 isr_1ms.telem_count
 269     MAIN.last
-26A     read_param_file.crc
-26A-26B live_send_xrw2g.lCRC
-26A     read_data_xrw2g.c
-26A     @PSTRINGCN_9600_31766_31767.P1
-26A     @delay_ms1.P2
-26A-26B live_send_vcs.lCRC
 26A-26B @PRINTF_LU_9600_31766_31767.P1
+26A-26B live_send_xrw2g.lCRC
+26A     @PSTRINGCN_9600_31766_31767.P1
+26A     read_data_xrw2g.c
+26A     @delay_ms1.P1
+26A-26B live_send_vcs.lCRC
+26A     read_param_file.crc
 26A     MAIN.@SCRATCH1
 26A     @PSTRINGC_9600_31766_31767.@SCRATCH1
 26B     write_param_file.crc
@@ -55,32 +55,32 @@
 26B     read_data_xrw2g.@SCRATCH1
 26B     @PSTRINGCN_9600_31766_31767.@SCRATCH1
 26B     @PSTRINGC_9600_31766_31767.@SCRATCH2
-26C-26F send_can_query.can_id
 26C     live_send_vcs.i
 26C-26D live_send_xrw2g.rCRC
 26C     uart_read.data
+26C-26F send_can_query.can_id
 26C     write_param_file.@SCRATCH1
 26C     read_param_file.@SCRATCH2
 26C     read_data_xrw2g.@SCRATCH2
 26C     @PSTRINGCN_9600_31766_31767.@SCRATCH2
 26C     @PRINTF_LU_9600_31766_31767.@SCRATCH1
-26D     @I2C_READ_1.P1
-26D     live_send_vcs.j
 26D-26E EEPROMDataRead.address
+26D     live_send_vcs.j
+26D     @I2C_READ_1.P1
 26D     uart_read.@SCRATCH1
 26D     write_param_file.@SCRATCH2
 26D     @PRINTF_LU_9600_31766_31767.@SCRATCH2
 26E-31E live_send_vcs.buff
-26E     live_send_xrw2g.i
 26E-26F EEPROMDataWrite.address
+26E     live_send_xrw2g.i
 26E     @I2C_READ_1.@SCRATCH1
 26E     @PRINTF_LU_9600_31766_31767.@SCRATCH3
 26F-270 EEPROMDataRead.data
 26F.0   live_send_xrw2g.valid
 26F     @I2C_READ_1.@SCRATCH2
 26F     @PRINTF_LU_9600_31766_31767.@SCRATCH4
-270-271 EEPROMDataWrite.data
 270-273 send_can_query.data
+270-271 EEPROMDataWrite.data
 270     live_send_xrw2g.@SCRATCH1
 270     @PRINTF_LU_9600_31766_31767.@SCRATCH5
 271     uart_putc.data
@@ -90,11 +90,11 @@
 272-273 EEPROMDataWrite.count
 272     uart_write.regaddr
 272     @PRINTF_LU_9600_31766_31767.@SCRATCH7
-273     EEPROMDataRead.crc
 273     uart_write.data
+273     EEPROMDataRead.crc
 274     can_set_mode.mode
-274     EEPROMDataWrite.crc
 274-277 can_putd.id
+274     EEPROMDataWrite.crc
 274     can_init.@SCRATCH1
 274     uart_write.@SCRATCH1
 274     EEPROMDataRead.@SCRATCH1
@@ -229,16 +229,16 @@ F55     RXB1DLC
 F60     RXB0CON
 F60     TXBaCON
 F61     RXB0SIDH
-F62     RXB0SIDL
 F62     TXRXBaSIDL
+F62     RXB0SIDL
 F63     RXB0EIDH
-F64     TXRXBaEIDL
 F64     RXB0EIDL
-F65     TXBaDLC
+F64     TXRXBaEIDL
 F65     RXB0DLC
 F65     RXBaDLC
-F66     RXB0D0
+F65     TXBaDLC
 F66     TXRXBaD0
+F66     RXB0D0
 F6D     TXRXBaD7
 F6D     RXB0D7
 F6E     CANSTAT
@@ -260,70 +260,78 @@ FA4.6   CAN_INT_WAKIF
 FA4.7   CAN_INT_IRXIF
 FAD     TXSTA
 FAD.1   TRMT
-FBE     CCP_1
 FBE     CCP_1_LOW
+FBE     CCP_1
 FBF     CCP_1_HIGH
 FE1-FE2 @WRITE_PACKED_MEMORY.P1
 FE1-FE2 @READ_PACKED_MEMORY.P2
-FE9-FEA @MEMSET.P1
-FE9-FEA @READ_PROGRAM_MEMORY.P2
-FE9-FEA @WRITE_PACKED_MEMORY.P3
-FE9-FEA @WRITE_PROGRAM_MEMORY.P4
-FE9-FEA @READ_PACKED_MEMORY.P5
+FE9-FEA @READ_PROGRAM_MEMORY.P1
+FE9-FEA @READ_PACKED_MEMORY.P2
+FE9-FEA @WRITE_PROGRAM_MEMORY.P3
+FE9-FEA @MEMSET.P4
+FE9-FEA @WRITE_PACKED_MEMORY.P5
 FF6-FF8 @READ_PROGRAM_MEMORY.P1
 FF6-FF8 @WRITE_PROGRAM_MEMORY.P2
 
 ROM Allocation:
-0A20  @delay_ms1
-141A  @PUTCHARI_BIU_1
-03D4  @GETCH_BIU_1
-116E  @I2C_READ_1
-0A50  @I2C_WRITE_1
-0CE0  can_init
-0B9E  can_set_baud
-0B78  can_set_mode
-0BAC  can_set_id
-0490  can_get_id
-129A  can_putd
-0848  can_getd
-11BC  uart_read
-0AA2  uart_write
-1602  uart_putc
-124C  uart_kbhit
-126A  uart_getc
-0AFC  uart_init
-13B4  crc_chk
-1422  live_send_vcs
-0DD2  @MEMSET
-1614  live_send_xrw2g
+0AA4  @delay_ms1
+148E  @PUTCHARI_BIU_1
+03BC  @GETCH_BIU_1
+11E6  @I2C_READ_1
+0ACC  @I2C_WRITE_1
+0D5A  can_init
+0C18  can_set_baud
+0BF2  can_set_mode
+0C26  can_set_id
+0478  can_get_id
+130E  can_putd
+0830  can_getd
+1234  uart_read
+0B1E  uart_write
+1664  uart_putc
+12C0  uart_kbhit
+12DE  uart_getc
+0B76  uart_init
+1428  crc_chk
+1496  live_send_vcs
+0E4C  @MEMSET
+1676  live_send_xrw2g
 00EA  modbus_auchCRCHi
 01FA  modbus_auchCRCLo
 030A  modbus_enable_timeout
 031E  modbus_timeout_now
-03EC  modbus_calc_crc
+03D4  modbus_calc_crc
 0350  isr_1ms
-041A  isr_serial_inverter
-083E  can_receive
-0688  isr_can_rx0
-083A  isr_can_rx1
+0402  isr_serial_inverter
+0826  can_receive
+0670  isr_can_rx0
+0822  isr_can_rx1
 0000  isr_canirx
-0F26  xor_crc
-0E64  EEPROMDataRead
-0EF0  EEPROMDataWrite
-0F94  write_param_file
-0FEC  write_default_param_file
-101C  read_param_file
-0DEC  init
-125E  read_data_xrw2g
-136C  send_can_query
-176C  MAIN
-09EC  @const884
-0A16  @const885
-1074  @PSTRINGCN_9600_31766_31767
-109E  @PSTRINGC_9600_31766_31767
-10C2  @PRINTF_LU_9600_31766_31767
-176C  @cinit1
-179E  @cinit2
+0FA4  xor_crc
+0EE2  EEPROMDataRead
+0F6E  EEPROMDataWrite
+1012  write_param_file
+1066  write_default_param_file
+1096  read_param_file
+0E66  init
+12D2  read_data_xrw2g
+13E0  send_can_query
+17CE  MAIN
+09D4  @const884
+09FE  @const885
+10EE  @PSTRINGCN_9600_31766_31767
+1118  @PSTRINGC_9600_31766_31767
+113A  @PRINTF_LU_9600_31766_31767
+0A08  @const891
+0A18  @const892
+0A2C  @const893
+0A3E  @const894
+0A52  @const895
+0A68  @const896
+0A7C  @const897
+0A92  @const898
+17CE  @cinit1
+1800  @cinit2
 0136  StrtoulGO
 0136  StrtolGO
 
@@ -336,8 +344,8 @@ Project Directory:
     C:\Users\James Jarvis\Desktop\planetPrecision\vcstap\
 
 Project Files:
-    vcstap.c                                                [29-Aug-16 15:19  CRC=B3474791]
-    vcstap.h                                                [29-Aug-16 13:30  CRC=4A4BF927]
+    vcstap.c                                                [29-Aug-16 18:29  CRC=6F1D82B3]
+    vcstap.h                                                [29-Aug-16 17:58  CRC=6AD63378]
     ..\..\..\..\..\Program Files (x86)\PICC\devices\18F2680.h [16-Jul-12 14:21  CRC=2D19C8D5]
     ..\..\..\..\..\Program Files (x86)\PICC\drivers\stdlib.h [08-Jun-11 14:39  CRC=0B6669CF]
     ..\..\..\..\..\Program Files (x86)\PICC\drivers\stddef.h [16-Jul-10 09:27  CRC=897CEC6C]
@@ -346,13 +354,13 @@ Project Files:
     can.c                                                   [08-Mar-13 18:57  CRC=57307AD7]
     can.h                                                   [12-Apr-13 11:56  CRC=4B75D92E]
     uart_sci16is740.c                                       [19-Apr-13 11:54  CRC=AD688AAE]
-    live.c                                                  [29-Aug-16 15:06  CRC=954DFD56]
+    live.c                                                  [29-Aug-16 18:27  CRC=4175AFAA]
     modbus_slave_vcstap.c                                   [19-Apr-13 15:17  CRC=076A60D5]
-    interrupt.c                                             [29-Aug-16 15:05  CRC=9E48C0F5]
-    param.c                                                 [29-Aug-16 13:32  CRC=9C36D37E]
+    interrupt.c                                             [29-Aug-16 16:41  CRC=2B8F3544]
+    param.c                                                 [29-Aug-16 17:59  CRC=608A3235]
     modbus_handler_vcstap.c                                 [16-Apr-13 15:10  CRC=F0738155]
 
-Source signature=18CB21F1
+Source signature=F2ED1CBE
 
 Units:
     vcstap (main)

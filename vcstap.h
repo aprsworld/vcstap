@@ -20,7 +20,7 @@
 
 #include <stdlib.h>
 //#FUSES INTRC_IO,NOPROTECT,WDT8192, NOIESO, NODEBUG
-#use delay(clock=8000000, restart_wdt)
+#use delay(clock=8000000)
 
 /*
  Sensors  WorldData R33 R34 R35 R36 XBee | UART1    | UART2 | SCI_UART                  | STATUS

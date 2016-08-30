@@ -22,7 +22,9 @@ void isr_1ms(void) {
 		telem_count=0;
 	}
 
+	output_toggle(LED_GREEN);
 
+#if 0
 	/* LED Green */
 	if ( 0==timer.led_on_green ) {
 		output_low(LED_GREEN);
@@ -30,6 +32,7 @@ void isr_1ms(void) {
 		output_high(LED_GREEN);
 		timer.led_on_green--;
 	}
+#endif
 
 #if 0
 	/* LED Red */

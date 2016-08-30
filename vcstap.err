@@ -1,7 +1,4 @@
-*** Error 56 "C:\Users\James Jarvis\Desktop\planetPrecision\vcstap\live.c" Line 74(10,27): Element is not a member
-*** Error 51 "C:\Users\James Jarvis\Desktop\planetPrecision\vcstap\live.c" Line 77(3,7): A numeric expression must appear here
-*** Error 56 "C:\Users\James Jarvis\Desktop\planetPrecision\vcstap\interrupt.c" Line 9(30,47): Element is not a member
-*** Error 56 "C:\Users\James Jarvis\Desktop\planetPrecision\vcstap\interrupt.c" Line 118(7,24): Element is not a member
-*** Error 56 "vcstap.c" Line 119(7,24): Element is not a member
-      5 Errors,  0 Warnings.
-Build Failed.
+>>> Warning 202 "C:\Users\James Jarvis\Desktop\planetPrecision\vcstap\modbus_handler_vcstap.c" Line 9(7,10): Variable never used:   val
+      Memory usage:   ROM=10%      RAM=19% - 26%
+      0 Errors,  1 Warnings.
+Build Successful.

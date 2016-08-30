@@ -29,14 +29,12 @@ char EEPROMDataWrite( int16 address, int8 *data, int16 count ) {
 void write_param_file() {
 	int8 crc;
 
-	restart_wdt();
 
 	/* write the config structure */
 	crc = EEPROMDataWrite(PARAM_ADDRESS,(void *)&config,sizeof(config));
 	/* write the CRC was calculated on the structure */
 	write_eeprom(PARAM_CRC_ADDRESS,crc);
 
-	restart_wdt();
 }
 
 void write_default_param_file() {
