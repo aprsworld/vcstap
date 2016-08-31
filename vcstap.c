@@ -192,16 +192,16 @@ void main(void) {
 
 	enable_interrupts(GLOBAL);
 
-	fprintf(rs232,"# (world) vcstap.c %s - my serial %c%lu\r\n",__DATE__,config.serial_prefix,config.serial_number);
+	fprintf(rs232,"# (world) vcstap.c %s - my serial %c%lu -",__DATE__,config.serial_prefix,config.serial_number);
 	switch ( last ) {
-		case WDT_TIMEOUT:       fprintf(rs232,"# WDT_TIMEOUT\r\n"); break;
-		case MCLR_FROM_SLEEP:   fprintf(rs232,"# MCLR_FROM_SLEEP\r\n"); break;
-		case MCLR_FROM_RUN:     fprintf(rs232,"# MCLR_FROM_RUN\r\n"); break;
-		case NORMAL_POWER_UP:   fprintf(rs232,"# NORMAL_POWER_UP\r\n"); break;
-		case BROWNOUT_RESTART:  fprintf(rs232,"# BROWNOUT_RESTART\r\n"); break;
-		case WDT_FROM_SLEEP:    fprintf(rs232,"# WDT_FROM_SLEEP\r\n"); break;
-		case RESET_INSTRUCTION: fprintf(rs232,"# RESET_INSTRUCTION\r\n"); break;
-		default:                fprintf(rs232,"# UNKNOWN CAUSE\r\n");
+		case WDT_TIMEOUT:       fprintf(rs232,"WDT_TIMEOUT\r\n"); break;
+		case MCLR_FROM_SLEEP:   fprintf(rs232,"MCLR_FROM_SLEEP\r\n"); break;
+		case MCLR_FROM_RUN:     fprintf(rs232,"MCLR_FROM_RUN\r\n"); break;
+		case NORMAL_POWER_UP:   fprintf(rs232,"NORMAL_POWER_UP\r\n"); break;
+		case BROWNOUT_RESTART:  fprintf(rs232,"BROWNOUT_RESTART\r\n"); break;
+		case WDT_FROM_SLEEP:    fprintf(rs232,"WDT_FROM_SLEEP\r\n"); break;
+		case RESET_INSTRUCTION: fprintf(rs232,"RESET_INSTRUCTION\r\n"); break;
+		default:                fprintf(rs232,"UNKNOWN CAUSE\r\n");
 	}
 		
 

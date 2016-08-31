@@ -274,28 +274,28 @@ FF6-FF8 @READ_PROGRAM_MEMORY.P1
 FF6-FF8 @WRITE_PROGRAM_MEMORY.P2
 
 ROM Allocation:
-0AA4  @delay_ms1
-148E  @PUTCHARI_BIU_1
+0A94  @delay_ms1
+147E  @PUTCHARI_BIU_1
 03BC  @GETCH_BIU_1
-11E6  @I2C_READ_1
-0ACC  @I2C_WRITE_1
-0D5A  can_init
-0C18  can_set_baud
-0BF2  can_set_mode
-0C26  can_set_id
+11D6  @I2C_READ_1
+0ABC  @I2C_WRITE_1
+0D4A  can_init
+0C08  can_set_baud
+0BE2  can_set_mode
+0C16  can_set_id
 0478  can_get_id
-130E  can_putd
+12FE  can_putd
 0830  can_getd
-1234  uart_read
-0B1E  uart_write
-1664  uart_putc
-12C0  uart_kbhit
-12DE  uart_getc
-0B76  uart_init
-1428  crc_chk
-1496  live_send_vcs
-0E4C  @MEMSET
-1676  live_send_xrw2g
+1224  uart_read
+0B0E  uart_write
+1654  uart_putc
+12B0  uart_kbhit
+12CE  uart_getc
+0B66  uart_init
+1418  crc_chk
+1486  live_send_vcs
+0E3C  @MEMSET
+1666  live_send_xrw2g
 00EA  modbus_auchCRCHi
 01FA  modbus_auchCRCLo
 030A  modbus_enable_timeout
@@ -307,31 +307,31 @@ ROM Allocation:
 0670  isr_can_rx0
 0822  isr_can_rx1
 0000  isr_canirx
-0FA4  xor_crc
-0EE2  EEPROMDataRead
-0F6E  EEPROMDataWrite
-1012  write_param_file
-1066  write_default_param_file
-1096  read_param_file
-0E66  init
-12D2  read_data_xrw2g
-13E0  send_can_query
-17CE  MAIN
+0F94  xor_crc
+0ED2  EEPROMDataRead
+0F5E  EEPROMDataWrite
+1002  write_param_file
+1056  write_default_param_file
+1086  read_param_file
+0E56  init
+12C2  read_data_xrw2g
+13D0  send_can_query
+17BE  MAIN
 09D4  @const884
 09FE  @const885
-10EE  @PSTRINGCN_9600_31766_31767
-1118  @PSTRINGC_9600_31766_31767
-113A  @PRINTF_LU_9600_31766_31767
+10DE  @PSTRINGCN_9600_31766_31767
+1108  @PSTRINGC_9600_31766_31767
+112A  @PRINTF_LU_9600_31766_31767
 0A08  @const891
-0A18  @const892
-0A2C  @const893
-0A3E  @const894
-0A52  @const895
-0A68  @const896
-0A7C  @const897
-0A92  @const898
-17CE  @cinit1
-1800  @cinit2
+0A16  @const892
+0A28  @const893
+0A38  @const894
+0A4A  @const895
+0A5E  @const896
+0A70  @const897
+0A84  @const898
+17BE  @cinit1
+17F0  @cinit2
 0136  StrtoulGO
 0136  StrtolGO
 
@@ -344,7 +344,7 @@ Project Directory:
     C:\Users\James Jarvis\Desktop\planetPrecision\vcstap\
 
 Project Files:
-    vcstap.c                                                [29-Aug-16 18:29  CRC=6F1D82B3]
+    vcstap.c                                                [30-Aug-16 21:30  CRC=0350A10B]
     vcstap.h                                                [29-Aug-16 17:58  CRC=6AD63378]
     ..\..\..\..\..\Program Files (x86)\PICC\devices\18F2680.h [16-Jul-12 14:21  CRC=2D19C8D5]
     ..\..\..\..\..\Program Files (x86)\PICC\drivers\stdlib.h [08-Jun-11 14:39  CRC=0B6669CF]
@@ -357,10 +357,10 @@ Project Files:
     live.c                                                  [29-Aug-16 18:27  CRC=4175AFAA]
     modbus_slave_vcstap.c                                   [19-Apr-13 15:17  CRC=076A60D5]
     interrupt.c                                             [29-Aug-16 16:41  CRC=2B8F3544]
-    param.c                                                 [29-Aug-16 17:59  CRC=608A3235]
+    param.c                                                 [30-Aug-16 21:31  CRC=608A3235]
     modbus_handler_vcstap.c                                 [16-Apr-13 15:10  CRC=F0738155]
 
-Source signature=F2ED1CBE
+Source signature=87203B16
 
 Units:
     vcstap (main)
