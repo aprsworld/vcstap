@@ -9,7 +9,7 @@ Programming XRW2G Portion:
 Programming ds30Loader into rsTap portion:
 * meProg
 * PIC18F2680
-* world/firmwareTesting/vcsTap_ds30Loader/vcsTap_ds30loader.HEX
+* world/firmwareProduction/vcstap/vcsTap_ds30loader.HEX
 
 
 Programming vcsTap firmware:
