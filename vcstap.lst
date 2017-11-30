@@ -1,4 +1,4 @@
-CCS PCH C Compiler, Version 4.135, 4375               13-Feb-17 16:16
+CCS PCH C Compiler, Version 4.135, 4375               30-Nov-17 10:18
 
                Filename: C:\Users\James Jarvis\Desktop\planetPrecision\vcstap\vcstap.lst
 
@@ -6987,10 +6987,10 @@ CCS PCH C Compiler, Version 4.135, 4375               13-Feb-17 16:16
 .................... 	config.serial_prefix='A'; //SERIAL_PREFIX_DEFAULT; 
 01062:  MOVLW  41
 01064:  MOVWF  22
-.................... 	config.serial_number=4780; //SERIAL_NUMBER_DEFAULT; 
-01066:  MOVLW  12
+.................... 	config.serial_number=5361; //SERIAL_NUMBER_DEFAULT; 
+01066:  MOVLW  14
 01068:  MOVWF  24
-0106A:  MOVLW  AC
+0106A:  MOVLW  F1
 0106C:  MOVWF  23
 ....................  
 ....................  
